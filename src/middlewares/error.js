@@ -9,4 +9,6 @@ const ErrorHandler = (req, res, status = 500, message = 'Interval server error')
     })
 }
 
-module.exports = ErrorHandler;
+module.exports = {
+    ErrorHandler
+};
