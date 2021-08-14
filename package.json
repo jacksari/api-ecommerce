@@ -1,0 +1,30 @@
+{
+  "name": "api-coiny",
+  "version": "1.0.0",
+  "description": "API CoinyPay",
+  "main": "index.js",
+  "scripts": {
+    "dev": "env-cmd -f src/config/environments/.env.dev nodemon index.js",
+    "start": "env-cmd -f src/config/environments/.env.production node index.js",
+    "test": "jest"
+  },
+  "author": "Jack Sari",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "env-cmd": "^10.1.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "http": "0.0.1-security",
+    "jest": "^27.0.6",
+    "mongoose": "^5.13.7",
+    "nodemailer": "^6.6.3",
+    "slug": "^5.1.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

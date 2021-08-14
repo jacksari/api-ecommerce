@@ -1,0 +1,33 @@
+image: node:14
+cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - .npm/
+before_script:
+  - npm ci --cache .npm --prefer-offline
+unit_test:
+  stage: test
+  script:
+    - npm run test
+  only:
+    - merge_requests
+deploy:
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - apt-get update && apt-get install -y rsync
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $HOSTNAME >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - npm ci --cache .npm --prefer-offline
+    # - npm run build -qa
+    # - echo NODE_ENV=prod >> .env | echo DATABASE_URL=$DATABASE_URL >> .env
+    - ssh ubuntu@$HOSTNAME 'cd ~ && mkdir -p coiny_api'
+    - rsync -avuz --exclude-from './.dockerignore' . ubuntu@$HOSTNAME:~/coiny_api
+    - ssh ubuntu@$HOSTNAME 'bash -s' < ./scripts/setup.sh
+  only:
+    - master
