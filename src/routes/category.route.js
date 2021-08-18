@@ -1,7 +1,10 @@
 const { Router } = require('express');
 const { 
     createCategory,
-    getCategoryTotal
+    getCategoryTotal,
+    getCategoryById,
+    deleteCategoryById,
+    updateCategoryById
 } = require('../controllers/category.controller');
 const { check } = require('express-validator');
 const fileUpload = require('express-fileupload');
@@ -22,6 +25,17 @@ router.get(
 
 router.get(
     '/:id',
+    getCategoryById
+)
+
+router.delete(
+    '/:id',
+    deleteCategoryById
+)
+
+router.put(
+    '/:id',
+    updateCategoryById
 )
 
 module.exports = router;

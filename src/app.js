@@ -36,6 +36,7 @@ class Server {
 
     routes() {
         this.app.use('/api/v1/category', require('./routes/category.route'));
+        this.app.use('/api/v1/upload', require('./routes/upload.route'));
         
     }
 

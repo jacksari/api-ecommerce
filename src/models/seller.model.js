@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const CategorySchema = Schema({
+const SellerSchema = Schema({
     name: {
         type: String,
         required: true,
@@ -28,13 +28,13 @@ const CategorySchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'categories' });
+},{ collecion: 'sellers' });
 
-CategorySchema.method('toJSON', function() {
+SellerSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     //object.uid = _id;
     return object;
 });
 
 
-module.exports = model('Category', CategorySchema);
+module.exports = model('Seller', SellerSchema);

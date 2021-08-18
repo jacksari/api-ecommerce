@@ -19,7 +19,32 @@ const getCategory = async () => {
     return resp;
 }
 
+const getCategoryById = async(id) => {
+    const resp = await Category.findById(id);
+    return resp;
+}
+
+const getCategoryBySlug = async(slug) => {
+    const resp = await Category.findOne({slug});
+    return resp;
+}
+
+const updateCategoryById = async(category, id) => {
+    category.updated_at = new Date;
+    const resp = await  Category.findByIdAndUpdate(id, category,{new: true});
+    return resp;
+}
+
+const deleteCategoryById = async(id) => {
+    const resp = await Category.findByIdAndDelete(id);
+    return resp
+}
+
 module.exports = {
     createCategory,
-    getCategory
+    getCategory,
+    getCategoryById,
+    updateCategoryById,
+    deleteCategoryById,
+    getCategoryBySlug
 }
