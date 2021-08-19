@@ -31,7 +31,7 @@ const ItemOrderSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'items_order' });
+},{ collection: 'items_order' });
 
 ItemOrderSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

@@ -2,7 +2,6 @@ const serviceCategory = require('../services/category.service')
 const { request, response } = require('express');
 const { ErrorHandler } = require('../middlewares/error')
 const slug = require('slug')
-const fs = require('fs');
 const { deleteFile } = require('../helpers/deleteFile');
 
 const createCategory = async (req = request, res = response) => {
@@ -21,7 +20,7 @@ const createCategory = async (req = request, res = response) => {
             category,
             ok: true
         })
-        
+
     } catch (e) {
         console.log(e);
         ErrorHandler(req, res, 500, 'Error al crear categoría')
@@ -30,7 +29,7 @@ const createCategory = async (req = request, res = response) => {
 
 const getCategoryTotal = async (req = request, res = response) => {
     try {
-        
+
         const categories = await serviceCategory.getCategory();
         res.json({
             categories,
@@ -47,7 +46,7 @@ const getCategoryById = async (req = request, res = response) => {
     try {
         const category = await serviceCategory.getCategoryById(id);
         if(!category) return ErrorHandler(req, res, 404, 'La categoria con ese id no existe')
-        
+
         res.json({
             category,
             ok: true

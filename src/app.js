@@ -16,7 +16,7 @@ class Server {
 
         // Http server
         this.server = http.createServer( this.app );
-        
+
         // Configuraciones de sockets
         //this.io = socketio( this.server, { /* configuraciones */ } );
     }
@@ -37,7 +37,8 @@ class Server {
     routes() {
         this.app.use('/api/v1/category', require('./routes/category.route'));
         this.app.use('/api/v1/upload', require('./routes/upload.route'));
-        
+        this.app.use('/api/v1/user', require('./routes/user.route'));
+
     }
 
     // Esta configuración se puede tener aquí o como propieda de clase

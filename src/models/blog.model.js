@@ -55,7 +55,7 @@ const BlogSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'blogs' });
+},{ collection: 'blogs' });
 
 BlogSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

@@ -1,29 +1,15 @@
 const { Schema, model } = require('mongoose');
 
-const PackSchema = Schema({
+const WishListSchema = Schema({
     product: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Product',
         },
     ],
-    stock:{
-        type: Number,
-        default: 0
-    },
-    code: {
-        type: String,
-    },
-    ofert: {
-        type: Number,
-        default: 10
-    },
-    description: {
-        type: String,
-    },
-    status: {
-        type: String,
-        default: false
+    user:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
     },
     created_at: {
         type: Date,
@@ -33,13 +19,13 @@ const PackSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collection: 'packs' });
+},{ collection: 'wish_lists' });
 
-PackSchema.method('toJSON', function() {
+WishListSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     object.uid = _id;
     return object;
 });
 
 
-module.exports = model('Pack', PackSchema);
+module.exports = model('WishList', WishListSchema);

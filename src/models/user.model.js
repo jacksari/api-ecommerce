@@ -44,6 +44,9 @@ const UserSchema = Schema({
         required: true,
         unique: true
     },
+    phoneNumber: {
+        type: String
+    },
     directions: [
         {
             type: Schema.Types.ObjectId,
@@ -58,7 +61,7 @@ const UserSchema = Schema({
         type: Date,
         default: Date.now()
     }
-});
+},{ collection: 'users' });
 
 UserSchema.method('toJSON', function() {
     const { __v, _id, password, ...object } = this.toObject();

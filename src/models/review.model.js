@@ -25,7 +25,7 @@ const ReviewSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'reviews' });
+},{ collection: 'reviews' });
 
 ReviewSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

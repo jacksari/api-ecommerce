@@ -28,7 +28,7 @@ const SellerSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'sellers' });
+},{ collection: 'sellers' });
 
 SellerSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

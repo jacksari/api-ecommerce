@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "compressor-img": "^1.0.7",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "env-cmd": "^10.1.0",
@@ -21,6 +22,7 @@
     "http": "0.0.1-security",
     "jest": "^27.0.6",
     "mongoose": "^5.13.7",
+    "mongoose-paginate-v2": "^1.4.2",
     "nodemailer": "^6.6.3",
     "slug": "^5.1.0",
     "uuid": "^8.3.2"

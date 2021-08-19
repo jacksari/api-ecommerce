@@ -1,24 +1,14 @@
 const { Schema, model } = require('mongoose');
 
-const CategorySchema = Schema({
+const CurrencySchema = Schema({
     name: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     description: {
         type: String
     },
-    image: {
+    code: {
         type: String
-    },
-    slug: {
-        type: String,
-        required: true,
-    },
-    status: {
-        type: Number,
-        default: 0
     },
     created_at: {
         type: Date,
@@ -28,13 +18,13 @@ const CategorySchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collection: 'categories' });
+},{ collection: 'currencies' });
 
-CategorySchema.method('toJSON', function() {
+CurrencySchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     //object.uid = _id;
     return object;
 });
 
 
-module.exports = model('Category', CategorySchema);
+module.exports = model('Currency', CurrencySchema);

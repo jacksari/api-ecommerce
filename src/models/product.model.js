@@ -50,6 +50,16 @@ const ProductSchema = Schema({
             type: String
         },
     ],
+    information: [
+        {
+            title: {
+                type: String,
+            },
+            description: {
+                type: String,
+            }
+        }
+    ],
     created_at: {
         type: Date,
         default: Date.now()
@@ -58,7 +68,7 @@ const ProductSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'products' });
+},{ collection: 'products' });
 
 ProductSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

@@ -38,7 +38,7 @@ const OrderSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'orders' });
+},{ collection: 'orders' });
 
 OrderSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

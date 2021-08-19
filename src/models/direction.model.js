@@ -2,6 +2,10 @@ const { Schema, model } = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 const DirectionSchema = Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     department: {
         type: String,
     },
@@ -25,7 +29,7 @@ const DirectionSchema = Schema({
         type: Date,
         default: Date.now()
     }
-});
+},{ collection: 'directions' });
 
 DirectionSchema.method('toJSON', function() {
     const { __v, _id, password, ...object } = this.toObject();

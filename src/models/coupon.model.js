@@ -33,7 +33,7 @@ const CouponSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'coupons' });
+},{ collection: 'coupons' });
 
 CouponSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

@@ -1,6 +1,7 @@
 const { Router } = require('express');
-const { 
-    upload
+const {
+    upload,
+    uploadAvatar
 } = require('../controllers/upload.controller');
 const { check } = require('express-validator');
 const fileUpload = require('express-fileupload');
@@ -14,14 +15,18 @@ router.post(
     upload
 )
 
-router.get(
-    '/',
-    
+router.post(
+    '/avatar/:type/:file',
 )
 
 router.get(
-    '/:id',
-    
+    '/',
+
+)
+
+router.get(
+    '/email/:email',
+
 )
 
 module.exports = router;

@@ -28,7 +28,7 @@ const BrandSchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'brands' });
+},{ collection: 'brands' });
 
 BrandSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();

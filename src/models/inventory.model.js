@@ -24,7 +24,7 @@ const InventorySchema = Schema({
         type: Date,
         default: Date.now()
     }
-},{ collecion: 'inventories' });
+},{ collection: 'inventories' });
 
 InventorySchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
